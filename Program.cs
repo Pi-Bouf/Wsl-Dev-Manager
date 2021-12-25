@@ -1,3 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Wsl_Dev_Manager;
+using Wsl_Dev_Manager.Logger;
 
-Console.WriteLine("Hello, World!");
+Logger.write("Welcome !");
+
+TaskExecutor te = new TaskExecutor();
+te.execute();
