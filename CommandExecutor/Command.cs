@@ -6,17 +6,18 @@ public class Command
 {
     private string exe;
     private string arguments;
-    private string output;
-    private string error;
+    public string output;
     private int exitCode;
     public Command(string exe, string arguments)
     {
         this.exe = exe;
         this.arguments = arguments;
+        this.output = "";
     }
 
     public void execute()
     {
+        string processOut = "";
         Process p = new Process();
         p.StartInfo.FileName = this.exe;
         p.StartInfo.Arguments = this.arguments;
@@ -25,10 +26,12 @@ public class Command
         p.StartInfo.RedirectStandardError = true;
         p.Start();
         
-        this.output += p.StandardOutput.ReadToEnd();
-        this.error += p.StandardError.ReadToEnd();
-        
+        processOut += p.StandardOutput.ReadToEnd();
+        processOut += p.StandardError.ReadToEnd();
+
         p.WaitForExit();
+
+        this.output = processOut;
         this.exitCode = p.ExitCode;
     }
 

@@ -16,11 +16,17 @@ public class AptUpdate : ITask
 
     public void execute()
     {
-        Command c = Command.Apt("Update");
+        Logger.Logger.write("AptUpdate", "Starting...");
+        
+        Command c = Command.Apt("update");
+        c.execute();
         if (c.failed())
         {
-            
+            Logger.Logger.write("AptUpdate", "Failed ! " + c.output, ConsoleColor.Red);
+            return;
         }
+        
+        Logger.Logger.write("AptUpdate", "Success", ConsoleColor.Green);
     }
 
     public void logError()

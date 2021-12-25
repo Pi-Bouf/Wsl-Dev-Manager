@@ -4,7 +4,6 @@ public class Logger
 {
     public static void write(string message, string more = null, ConsoleColor moreColor = ConsoleColor.Cyan)
     {
-        Console.WriteLine("");
         DateTime localDate = DateTime.Now;
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.Write("[");
@@ -26,5 +25,6 @@ public class Logger
             Console.ForegroundColor = moreColor;
             Console.Write("► " + more);
         }
+        Console.WriteLine("");
     }
 }

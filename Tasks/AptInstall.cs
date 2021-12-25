@@ -20,7 +20,7 @@ public class AptInstall: ITask
 
     public void execute()
     {
-        throw new NotImplementedException();
+        Logger.Logger.write("AptInstall", "Not implemented", ConsoleColor.Red);
     }
 
     public void logError()

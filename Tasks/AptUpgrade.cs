@@ -1,3 +1,5 @@
+using Wsl_Dev_Manager.ProcessExecutor;
+
 namespace Wsl_Dev_Manager.Tasks;
 
 public class AptUpgrade : ITask
@@ -14,7 +16,17 @@ public class AptUpgrade : ITask
 
     public void execute()
     {
-        Console.WriteLine(this.getTaskName() + " not implemented !");
+        Logger.Logger.write("AptUpgrade", "Starting...");
+        
+        Command c = Command.Apt("upgrade");
+        c.execute();
+        if (c.failed())
+        {
+            Logger.Logger.write("AptUpgrade", "Failed ! " + c.output, ConsoleColor.Red);
+            return;
+        }
+        
+        Logger.Logger.write("AptUpgrade", "Success", ConsoleColor.Green);
     }
 
     public void logError()
