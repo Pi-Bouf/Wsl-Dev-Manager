@@ -12,7 +12,7 @@ public class TaskExecutor
         {
             new AptUpdate(),
             new AptUpgrade(),
-            new AptInstall("yadm")
+            new AptInstall("tmate")
         };
     }
 

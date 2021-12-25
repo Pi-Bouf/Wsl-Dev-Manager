@@ -1,3 +1,5 @@
+using Wsl_Dev_Manager.ProcessExecutor;
+
 namespace Wsl_Dev_Manager.Tasks;
 
 public class AptInstall: ITask
@@ -20,7 +22,17 @@ public class AptInstall: ITask
 
     public void execute()
     {
-        Logger.Logger.write("AptInstall", "Not implemented", ConsoleColor.Red);
+        Logger.Logger.write("AptInstall", "Starting...");
+        
+        Command c = Command.Apt("install " + what);
+        c.execute();
+        if (c.failed())
+        {
+            Logger.Logger.write("AptInstall", "Failed ! " + c.output, ConsoleColor.Red);
+            return;
+        }
+        
+        Logger.Logger.write("AptInstall", "Success", ConsoleColor.Green);
     }
 
     public void logError()
