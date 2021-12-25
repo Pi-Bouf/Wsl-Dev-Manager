@@ -1,15 +1,15 @@
 namespace Wsl_Dev_Manager.Tasks;
 
-public class AptUpdate : ITask
+public class AptUpgrade : ITask
 {
     public string getTaskName()
     {
-        return "AptUpdate";
+        return "AptUpgrade";
     }
 
     public string[] getDependencies()
     {
-        return new string[] {};
+        return new string[] {"AptUpdate"};
     }
 
     public void execute()
