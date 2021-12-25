@@ -1,3 +1,5 @@
+using Wsl_Dev_Manager.ProcessExecutor;
+
 namespace Wsl_Dev_Manager.Tasks;
 
 public class AptUpdate : ITask
@@ -14,7 +16,11 @@ public class AptUpdate : ITask
 
     public void execute()
     {
-        Console.WriteLine(this.getTaskName() + " not implemented !");
+        Command c = Command.Apt("Update");
+        if (c.failed())
+        {
+            
+        }
     }
 
     public void logError()
